@@ -6,8 +6,14 @@
 
 int builder_app(int *ptr_backup_key ){
     create_save_key(ptr_backup_key);
-    system("chcp 65001");
-    int check = system("title \" IrWorld | Creation du Compte \" ");
+    int check_police = system("chcp 65001");
+    int check_title = system("title \" IrWorld | Creation du Compte \" ");
     system("CLS");
-    return check;
+
+    if (check_police == 0 && check_title == 0){
+        return  0;   
+    }
+    else{
+        return 1;
+    }
 }
