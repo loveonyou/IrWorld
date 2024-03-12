@@ -13,7 +13,7 @@ int nav_menu(){ /*Main Menue for use Select World, Inventari, Select Level, Xp i
     printf("║[1] Choix du monde             ║\n");
     printf("║[2] Profile                    ║\n");
     printf("║[3] Chargé une sauvegarde      ║\n");
-    printf("║[5] afficher la backup key     ║\n");
+    printf("║[4] afficher la backup key     ║\n");
     printf("║[0] Quitter                    ║\n");
     printf("║[10] Help                      ║\n");
     printf("╚ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ╝\n");
@@ -45,15 +45,14 @@ void Start_menu(char *ptr_pseudo){ /*Start Menu  for create name tag for create 
 } 
 
 
-void choose_world(){
+int choose_world(){
     int choix;
     printf("╔ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ╗\n");
-    printf("║[1] Choix du monde             ║\n");
-    printf("║[2] Profile                    ║\n");
-    printf("║[3] Chargé une sauvegarde      ║\n");
-    printf("║[5] afficher la backup key     ║\n");
-    printf("║[0] Quitter                    ║\n");
-    printf("║[10] Help                      ║\n");
+    printf("║[1] Tira                       ║\n");
+    printf("║[2] Foga                       ║\n");
+    printf("║[3] Spectro                    ║\n");
+    printf("║[4] Eclusia                    ║\n");
+    printf("║[?] ?                          ║\n");
     printf("╚ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ╝\n");
 
     printf("-> : ");

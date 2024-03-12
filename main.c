@@ -3,17 +3,18 @@
 #include <stdbool.h>
 #include <time.h>
 #include "fonction/fonction.h"
+#include <string.h>
 #include "asset/asset.h"
-#include "structure/struct.h"
+#include "structures/structures.h"
 
 
 int main(void) {
-
-    struct world world_1;
-    
+    int value_item_list = 0; // setup the list number for the next append
+    struct world *world_1 = malloc(sizeof(struct world)); // setup struct for the world and allocating memory for the pointers
+    struct player *ptr_player =malloc(sizeof(struct player));
+    ptr_player->Inventory = (struct inventory *)malloc(sizeof(struct inventory));
     bool app_statue = true;
     int backup_key, nav_choose;
-    char pseudo[100];
     int  app_create_value = builder_app(&backup_key);
     if (app_create_value == 1){
 
@@ -22,8 +23,7 @@ int main(void) {
         return 1;
     }
     else if (app_create_value == 0){
-        Start_menu(pseudo);
-
+        Start_menu(ptr_player->name);
         while (app_statue == true){
             nav_choose = nav_menu();
             if (nav_choose == 0){
@@ -34,6 +34,8 @@ int main(void) {
             }
         }
     }
+    
+
     
     
 }
