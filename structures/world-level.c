@@ -2,6 +2,15 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include <time.h>
+
+
+struct level{
+    int xp_win;
+    char level_name[50];
+    
+};
+
+
 struct map{
 
     char ligne_1[1000];
@@ -15,8 +24,8 @@ struct world
     {
         bool acces;
         char name[10];
+        int levelcompleted[6];
         struct map *map;
-        
         
 };
 struct worlds{
