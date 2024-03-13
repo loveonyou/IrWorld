@@ -1,6 +1,11 @@
 #include <stdio.h>
-int nav_menu(){ /*Main Menue for use Select World, Inventari, Select Level, Xp information, */
-    int choix;
+/**
+ * Main Menue for use Select World, Inventari, Select Level, Xp information
+ *
+ * @return choose : int number, corresponding to a action for navagation menu
+ */
+int nav_menu(){ 
+    int choose;
     printf("  _   _             _             _   _\n");             
     printf(" | \\ | |           (_)           | | (_)\n");            
     printf(" |  \\| | __ ___   ___  __ _  __ _| |_ _  ___  _ __ \n"); 
@@ -19,11 +24,15 @@ int nav_menu(){ /*Main Menue for use Select World, Inventari, Select Level, Xp i
     printf("╚ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ╝\n");
 
     printf("-> : ");
-    scanf("%i", choix );
-    return choix;
+    scanf("%i", choose );
+    return choose;
 
 }
-
+/**
+ * Menu for starting and choose pseudo
+ *
+ * @param ptr_pseudo pseudo of user, type string .
+ */
 void Start_menu(char *ptr_pseudo){ /*Start Menu  for create name tag for create sesion or load and sesion */
     printf("▄█     ▄████████       ▄█     █▄   ▄██████▄     ▄████████  ▄█       ████████▄  \n");
     printf("███    ███    ███      ███     ███ ███    ███   ███    ███ ███       ███   ▀███\n");
@@ -43,8 +52,11 @@ void Start_menu(char *ptr_pseudo){ /*Start Menu  for create name tag for create 
     printf("-> : ");
     scanf("%s", ptr_pseudo);
 } 
-
-
+/**
+ * Menu for choose world
+ *
+ * @return choose : int number, corresponding to a world
+ */
 int choose_world(){
     int choix;
     printf("╔ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ╗\n");

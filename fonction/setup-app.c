@@ -3,7 +3,11 @@
 #include <time.h>
 #include "../asset/asset.h"
 
-
+/**
+ * build asset and overlay for the app
+ *
+ * @return 1 or 0 , corresponding if the asset setup correctly, 1 : error, 0 : success
+ */
 int builder_app(int *ptr_backup_key ){
     create_save_key(ptr_backup_key);
     int check_police = system("chcp 65001");
