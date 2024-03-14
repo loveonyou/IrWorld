@@ -24,13 +24,13 @@ struct level{
  */
 struct map{
 
-    char ligne_1[1000];
-    char ligne_2[1000];
-    char ligne_3[1000];
-    char ligne_4[1000];
-    char ligne_5[1000];
-    char ligne_6[1000];
-}
+    char line_1[1000];
+    char line_2[1000];
+    char line_3[1000];
+    char line_4[1000];
+    char line_5[1000];
+    char line_6[1000];
+};
 /**
  * Struct of world 
  *
@@ -42,11 +42,10 @@ struct map{
  * 
  * struct map *map : pointeur ref to map .   
  */
-struct world
-    {
+struct world{
         bool acces;
         char name[10];
-        bool level_status[5];
+        bool level_status[4];
         struct map *map;
         
 };
