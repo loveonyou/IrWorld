@@ -5,4 +5,4 @@ echo appuyer pour lancer le programe
 pause
 CLS
 IrWorld.exe
-exit
+exit&

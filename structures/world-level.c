@@ -2,35 +2,6 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include <time.h>
-
-/**
- * Struct of level 
- *
- * int xp_win : xp can win at the end of level
- * 
- * string level_name : name of level
- */
-struct level{
-    int xp_win;
-    char level_name[50];
-    
-};
-
-/**
- * Struct of map 
- *
- * string ligne_1 -> _6 : the line for the map 
- * 
- */
-struct map{
-
-    char line_1[1000];
-    char line_2[1000];
-    char line_3[1000];
-    char line_4[1000];
-    char line_5[1000];
-    char line_6[1000];
-};
 /**
  * Struct of world 
  *
@@ -49,6 +20,49 @@ struct world{
         struct map *map;
         
 };
+/**
+ * Struct of level 
+ *
+ * int xp_win : xp can win at the end of level
+ * 
+ * string level_name : name of level
+ */
+struct level{
+    int xp_win;
+    char level_name[50];
+    
+};
+
+/**
+ * Struct of map 
+ *
+ * string ligne_1 -> _20 : the line for the map 
+ * 
+ */
+struct map{
+
+    char line_1[1000];
+    char line_2[1000];
+    char line_3[1000];
+    char line_4[1000];
+    char line_5[1000];
+    char line_6[1000];
+    char line_7[1000];
+    char line_8[1000];
+    char line_9[1000];
+    char line_10[1000];
+    char line_11[1000];
+    char line_12[1000];
+    char line_13[1000];
+    char line_14[1000];
+    char line_15[1000];
+    char line_16[1000];
+    char line_17[1000];
+    char line_18[1000];
+    char line_19[1000];
+    char line_20[1000];
+};
+
 
 /**
  * Struct of all Worlds

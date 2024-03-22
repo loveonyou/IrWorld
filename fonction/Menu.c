@@ -1,12 +1,18 @@
+#include <stdlib.h>
 #include <stdio.h>
+#include <stdbool.h>
+#include <time.h>
+#include <string.h>
+//
 /**
  * Main Menue for use Select World, Inventari, Select Level, Xp information
  *
  * @return choose : int number, corresponding to a action for navagation menu
  */
-int nav_menu(){ 
-    int choose;
-    printf("  _   _             _             _   _\n");             
+int nav_menu(){
+    bool chooseinput = false; 
+    int choose, caracter;
+    printf("  _   _              _             _   _\n");             
     printf(" | \\ | |           (_)           | | (_)\n");            
     printf(" |  \\| | __ ___   ___  __ _  __ _| |_ _  ___  _ __ \n"); 
     printf(" | . ` |/ _` \\ \\ / / |/ _` |/ _` | __| |/ _ \\| '_ \\ \n");
@@ -22,11 +28,18 @@ int nav_menu(){
     printf("║[0] Quitter                    ║\n");
     printf("║[10] Help                      ║\n");
     printf("╚ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ╝\n");
-
+    while ((caracter = getchar()) != '\n' && caracter != EOF);
+    while(chooseinput == false){
     printf("-> : ");
-    scanf("%i", choose );
+    if(scanf("%i", &choose) == 1){
+        chooseinput = true;
+        }
+    else{
+            printf("Veuillez saisir un nombre\n");
+            while ((caracter = getchar()) != '\n' && caracter != EOF);
+        }
+    }
     return choose;
-
 }
 /**
  * Menu for starting and choose pseudo
@@ -34,6 +47,8 @@ int nav_menu(){
  * @param ptr_pseudo pseudo of user, type string .
  */
 void Start_menu(char *ptr_pseudo){ /*Start Menu  for create name tag for create sesion or load and sesion */
+    bool psdinput = false;
+    int caracter;
     printf("▄█     ▄████████       ▄█     █▄   ▄██████▄     ▄████████  ▄█       ████████▄  \n");
     printf("███    ███    ███      ███     ███ ███    ███   ███    ███ ███       ███   ▀███\n");
     printf("███    ███    ███      ███     ███ ███    ███   ███    ███ ███       ███   ▀███ \n");
@@ -49,8 +64,16 @@ void Start_menu(char *ptr_pseudo){ /*Start Menu  for create name tag for create 
     printf("║Bienvenue dans Iris World.     ║\n");
     printf("║Entre votre pseudonyme         ║\n");
     printf("╚ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ╝\n");
+    while( psdinput == false){
     printf("-> : ");
-    scanf("%s", ptr_pseudo);
+    if(scanf("%s", ptr_pseudo) == 1){
+        psdinput = true;
+        }
+    else{
+            printf("Veuillez saisir un pseudo valide\n");
+            while ((caracter = getchar()) != '\n' && caracter != EOF);
+        }
+    }
 } 
 /**
  * Menu for choose world
@@ -58,7 +81,14 @@ void Start_menu(char *ptr_pseudo){ /*Start Menu  for create name tag for create 
  * @return choose : int number, corresponding to a world
  */
 int choose_world(){
-    int choix;
+    bool chooseinput = false;
+    int choose,caracter;
+    printf("|  \\/  |                     | |\n");       
+    printf("| \\  / |   ___    _ __     __| |   ___\n"); 
+    printf("| |\\/| |  / _ \\  | '_ \\   / _` |  / _ \\ \n");
+    printf("| |   | | | (_) | | | | | | (_| | |  __/\n");
+    printf("|_|   |_|  \\n___/  |_| |_|  \\__,_|  \\___|\n");
+                    
     printf("╔ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ╗\n");
     printf("║[1] Tira                       ║\n");
     printf("║[2] Foga                       ║\n");
@@ -67,8 +97,15 @@ int choose_world(){
     printf("║[?] ?                          ║\n");
     printf("╚ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ╝\n");
 
+    while(chooseinput == false){
     printf("-> : ");
-    scanf("%i", choix );
-    return choix;
-
+    if(scanf("%i", &choose) == 1){
+        chooseinput = true;
+        }
+    else{
+            printf("Veuillez saisir un nombre\n");
+            while ((caracter = getchar()) != '\n' && caracter != EOF);
+        }
+    }
+    return choose;
 }
