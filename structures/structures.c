@@ -1,5 +1,8 @@
-#ifndef STRUCT_H
-#define STRUCT_H
+#include <stdlib.h>
+#include <stdio.h>
+#include <stdbool.h>
+#include <time.h>
+#include <string.h>
 /**
  * Struct of world 
  *
@@ -96,7 +99,6 @@ struct armor{
     int id; 
     char name[10];
     int hp_boost;  
-    int tier;
     int attack_boost; 
 };
 /**
@@ -112,7 +114,6 @@ struct armor{
 struct sword{
     int id;
     char name[15];
-    int tier;
     int damage; 
 };
 /**
@@ -129,7 +130,6 @@ struct magic_orb{
     int id;
     char name[15]; 
     char type_magic[10]; 
-    int tier;
     int damage_boost;
 };
 /**
@@ -145,9 +145,6 @@ struct magic_orb{
 struct heal{
     int id; 
     char name[15];
-    int tier;
     int hp_recharge;
 };
 
-
-#endif 

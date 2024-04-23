@@ -43,29 +43,32 @@ int main(void) {
     struct player *ptr_player =malloc(sizeof(struct player));
     ptr_player->Inventory = (struct inventory *)malloc(sizeof(struct inventory));
 
+    // setup inventory 
+
+
     // setup the app 
     app_create_status = builder_app(&backup_key); 
 
     // setup all wolrds information
     world_setup_statuts_1  = worlds_setup(world_1_temp, "Foga", 
     "╔ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ╗", 
-    "║     ▒▒▒▒▒▒▒▒      ▒▒▒▒▒▒▒▒                                                              ║", 
-    "║    ▒▐▒▐▒▒▒▒▌▒    ▒▒▌▒▒▐▒▒▌▒                                                             ║", 
-    "║     ▒▀▄█▒▄▀▒      ▒▀▄▒▌▄▀▒                                                              ║", 
-    "║        ██            ██                                                                 ║",
-    "║      ▄▄██▄    [1]   ▄██▄                                                                ║", 
-    "║                                                                                         ║", 
-    "║                                                                                         ║", 
-    "║                                                                                         ║", 
-    "║                                                                                         ║", 
-    "║      a                                                                                  ║", 
-    "║                                                                                         ║", 
-    "║                                                                                         ║", 
-    "║                                                                                         ║", 
-    "║                                                                                         ║", 
-    "║                                                                                         ║", 
-    "║                                                                                         ║", 
-    "║                                                                                         ║", 
+    "║     ▒▒▒▒▒▒▒▒      ▒▒▒▒▒▒▒▒                                               _   |~  _      ║", 
+    "║    ▒▐▒▐▒▒▒▒▌▒    ▒▒▌▒▒▐▒▒▌▒                                             [_]--'--[_]     ║", 
+    "║     ▒▀▄█▒▄▀▒      ▒▀▄▒▌▄▀▒                             x                |'|''`''|'|     ║", 
+    "║        ██            ██                     .-. _______|                | | /^\\ | |     ║",
+    "║      ▄▄██▄    [1]   ▄██▄                    |=|/     /  \\               |_|_|5|_|_|     ║", 
+    "║                ║                            | |_____|_''_|                   ║          ║", 
+    "║                ╚═════════════════════════╗  |_|_[2]_|____|                   ║          ║", 
+    "║                                     +    ║════════════════════════════════════╗         ║", 
+    "║                                    / \\                                        ║         ║", 
+    "║  _____         ____     __________/ o \\/\\_________      _________             ║         ║", 
+    "║ |o o o|_______|    |___|   SHOP        | | # # #  |____|o o o o  | /\\         ║         ║", 
+    "║ |o o o|  * * *|: ::|. .|               |o| # # #  |. . |o o o o  |//\\\\        ║         ║", 
+    "║ |o o o|* * *  |::  |. .| []  []  []  []|o| # # #  |. . |o o o o  |((|))       ║         ║", 
+    "║ |o o o|**  ** |:  :|. .| []  []  []    |o| # # #  |. . |o o o o  |((|))       ║         ║", 
+    "║ |_[]__|__[]___|_||_|__<|____________[0]|_|___/\\___|_.|_|____[]___|  |[3]      ║         ║", 
+    "║  [4]                                                                  ║       ║         ║", 
+    "║   ════════════════════════════════════════════════════════════════════════════          ║", 
     "║                                                                                         ║", 
     "╚ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ╝" );
     world_setup_statuts_2  = worlds_setup(world_2_temp, "Tira", 
@@ -145,6 +148,7 @@ int main(void) {
     free(world_3_temp);
     free(world_4_temp);
 
+    
 
     if (world_setup_statuts_1 != 0  || world_setup_statuts_2 != 0 || world_setup_statuts_3 != 0 || world_setup_statuts_4 != 0 ){ // chedck if atll world are setup correctly
         printf("\x1b[31m[ERROR]\x1b[0m\nEn : Wolrds content failled to setup \nFr : Une erreur est survenue lors du chargement des contenue des mondes\n\n any probleme\n un probleme ?  : https://github.com/loveonyou/IrWorld");
@@ -162,13 +166,29 @@ int main(void) {
         while (app_status == true){
             nav_choose = nav_menu(); 
             if (nav_choose == 0){
-                return 0;
+                break;
             }
-            else if(nav_choose == 1){
+            else if(nav_choose == 1){ // start history
                 wolrd_choose = choose_world();
                 if (wolrd_choose == 1){
                     world_1(ptr_player, Worlds);
                 }
+            }
+            else if (nav_choose == 2){ // show profile of player
+                printf("profile [no available]\n");
+                continue;
+            }
+            else if (nav_choose == 3){ // load and save
+                printf("chargée une sauvagarde [no available]\n");
+            }
+            else if (nav_choose == 4){ // show backup key
+                    printf("╔ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ╗\n");
+                    printf("║           Backup-Key          ║\n");
+                    printf("║              %i               ║\n", &backup_key);
+                    printf("╚ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ╝\n");
+            }
+            else if (nav_choose == 10){ // show rules
+                printf("Régles [no available]");
             }
         }
     }

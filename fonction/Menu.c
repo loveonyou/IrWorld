@@ -32,7 +32,9 @@ int nav_menu(){
     while(chooseinput == false){
     printf("-> : ");
     if(scanf("%i", &choose) == 1){
-        chooseinput = true;
+        if (choose == 1 ||  choose == 2 ||  choose == 3 ||  choose == 4 ||  choose == 10||  choose == 0 ){
+            chooseinput = true;
+        }
         }
     else{
             printf("Veuillez saisir un nombre\n");
@@ -86,8 +88,8 @@ int choose_world(){
     printf("|  \\/  |                     | |\n");       
     printf("| \\  / |   ___    _ __     __| |   ___\n"); 
     printf("| |\\/| |  / _ \\  | '_ \\   / _` |  / _ \\ \n");
-    printf("| |   | | | (_) | | | | | | (_| | |  __/\n");
-    printf("|_|   |_|  \\n___/  |_| |_|  \\__,_|  \\___|\n");
+    printf("| |  | | | (_) | | | | | | (_| | |  __/\n");
+    printf("|_|  |_|  \\___/  |_| |_|  \\__,_|  \\___|\n");
                     
     printf("╔ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ╗\n");
     printf("║[1] Tira                       ║\n");
@@ -95,12 +97,15 @@ int choose_world(){
     printf("║[3] Spectro                    ║\n");
     printf("║[4] Eclusia                    ║\n");
     printf("║[?] ?                          ║\n");
+    printf("║[0] navigation                 ║\n");
     printf("╚ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ╝\n");
 
     while(chooseinput == false){
     printf("-> : ");
     if(scanf("%i", &choose) == 1){
-        chooseinput = true;
+        if (choose == 1 ||  choose == 2 ||  choose == 3 ||  choose == 4 ||  choose == 5 ||  choose == 0 ){
+            chooseinput = true;
+        }
         }
     else{
             printf("Veuillez saisir un nombre\n");
