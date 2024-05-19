@@ -40,12 +40,33 @@ struct inventory{
        struct magic_orb *magic_orb[15];
        struct heal *heal[30];
     };
+/**
+ * Struct of Inventory
+ *
+ * int xp_total : total of xp have player
+ * 
+ * char name[100] : name of player
+ * 
+ * struct inventory *Inventory  : reference to inventory structure
+ * 
+ * int hp : hp of player
+ * 
+ * int id_armor : id of armor the player equipe
+ * 
+ * int id_sword : id ofsword the player equipe
+ * 
+ * int id_magic_orb : id of magic orb the player equipe
+*/
 struct player
 {
     int xp_total;
     char name[100];
     struct inventory *Inventory;
-
+    int hp;
+    int damage_sword;
+    int id_armor;
+    int id_sword;
+    int id_magic_orb;
 };
 /**
  * Struct of all Worlds
@@ -98,8 +119,10 @@ struct level{
 struct armor{   
     int id; 
     char name[10];
+    int tier;
     int hp_boost;  
-    int attack_boost; 
+    int attack_boost;
+    bool equipped; 
 };
 /**
  * Struct of sword
@@ -114,7 +137,9 @@ struct armor{
 struct sword{
     int id;
     char name[15];
+    int tier;
     int damage; 
+    bool equipped;
 };
 /**
  * Struct of Magic Orb
@@ -131,6 +156,7 @@ struct magic_orb{
     char name[15]; 
     char type_magic[10]; 
     int damage_boost;
+    bool equipped;
 };
 /**
  * Struct of Heal
@@ -144,7 +170,41 @@ struct magic_orb{
 */
 struct heal{
     int id; 
-    char name[15];
+    char name[20];
     int hp_recharge;
 };
+/**
+ * Struct of master
+ *
+ * int id : id of the master
+ * 
+ * char name : name of the master
+ * 
+ * int hp : hp of the master
+ * 
+ * int damage_min
+ *                  -> slice of damage can inflict the master
+ * int damage_max
+ * 
+ * int xp_win_min
+ *                  -> slice of the player can win
+ * int xp_win_max
+ 
+*/
+struct Maitre {
+    int id;
+    char name[15];
+    int hp;
+    int damage_min;
+    int damage_max;
+    int xp_win_min;
+    int xp_win_max;
+};
 
+struct attack{
+    int id ;
+    char name[50];
+    int tier;
+    int type;
+    int damage;
+}

@@ -1,8 +1,4 @@
-#include<stdlib.h>
-#include <stdio.h>
-#include <stdbool.h>
-#include <time.h>
-#include <string.h>
+
 #include "../asset/asset.h"
 #include "../structures/structures.h"
 
@@ -33,7 +29,7 @@ int builder_app(int *ptr_backup_key ){
  * 
  * @param world_name : name of the world
  * 
- * @param line_1->6 : line of the world map , which goes from line_1 to line_6
+ * @param line_1->6 : line of the world map , which goes from line_1 to line_20
  * 
  * @return 1 if the wolrds setup correctly
  */
@@ -63,16 +59,81 @@ int worlds_setup(struct world *world_builder, char world_name[], char Line_1[], 
     strcpy(world_builder->map->line[16] , Line_17);
     strcpy(world_builder->map->line[17] , Line_18);
     strcpy(world_builder->map->line[18] , Line_19);
-    strcpy(world_builder->map->line [19] , Line_20 );
+    strcpy(world_builder->map->line[19] , Line_20 );
 
     return 0;
     
-};
+}
+/**
+ * setup the variables for the sword
+ *
+ * @param sword_builder : reference to an sword for building it
+ * 
+ * @param id : id of the sword
+ * 
+ * @param sword_name : name of the sword
+ * 
+ * @param tier : tier of the sword
+ * 
+ * @param damage : damage of the sword
+ 
+*/
+int sword_setup(struct sword *sword_builder,int id, char sword_name[],int tier, int damage   ){
+    sword_builder->id = id;
+    strcpy(sword_builder->name, sword_name);
+    sword_builder->tier = tier;
+    sword_builder->damage = damage;
+    sword_builder->equipped = false;
 
-int sword_setup(struct sword *sword_builder,int id, char sword_name[],int tier, int damage   ){};
+}
+/**
+ * setup the variables for the armor
+ *
+ * @param armor_builder : reference to an armor for building it
+ * 
+ * @param id : id of the armor
+ * 
+ * @param armor_name : name of the armor
+ * 
+ * @param hp_boost : hp the armor boost the live of player
+ * 
+ * @param tier : tier of the armor
+ * 
+ * @param attack_boost : attack boost of the armor
+ 
+*/
+int armor_setup(struct armor *armor_builder, int id, char armor_name[], int tier, int hp_boost, int attack_boost){
+    armor_builder->id = id;
+    strcpy(armor_builder->name, armor_name);
+    armor_builder->hp_boost = hp_boost;
+    armor_builder->tier = tier;
+    armor_builder->attack_boost = attack_boost;
+    armor_builder->equipped = false;
+  
+}
 
-int armor_setup(struct sword *sword_builder, int id, char sword_name[], int hp_boost, int tier, int attack_boost){};
+int magic_orb_setup(struct magic_orb *orb_builder, int id, char magic_orb_name[],  int tier, char type_magic[], int damage_boost){
+    orb_builder->id = id;
+    strcpy(orb_builder->name, magic_orb_name);
+    strcpy(orb_builder->type, type_magic);
+    orb_builder->tier = tier;
+    orb_builder->damage_boost = damage_boost;
+    orb_builder->equipped = false;
 
-int magic_orb_setup(struct magic_orb *orb_builder, int id, char magic_orb_name[], char type_magic[], int tier, int damage_boost){};
+}
 
+int heal_setup(struct heal *heal_builder, int id ,char heal_name[],int tier, int hp_recharge){
+    heal_builder->id = id;
+    strcpy(heal_builder->name, heal_name);
+    heal_builder->tier = tier;
+    heal_builder->hp_recharge = hp_recharge;
 
+}
+
+int attack_setup(struct attack *attack_builder, int id ,char attack_name[],int tier, int type, int damage){
+    attack_builder->id = id;
+    strcpy(attack_builder->name, attack_name);
+    attack_builder->tier = tier;
+    attack_builder->type = type;
+    attack_builder->damage = damage;
+}

@@ -23,5 +23,9 @@ void world_1(struct player *player, struct worlds *worlds){
         printf("%s\n", worlds->World_1->map->line[i]);
     }
 
-    printf("\n Salut, %s.\n Je te shouaite la bienvenue dans le monde de Foga", player->name);
+    printf("\n Salut, %s.\n Je te shouaite la bienvenue dans le monde de Foga.", player->name);
+
+    scanf("%d");
+
+    
 }

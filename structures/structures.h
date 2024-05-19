@@ -37,12 +37,36 @@ struct inventory{
        struct magic_orb *magic_orb[15];
        struct heal *heal[30];
     };
+/**
+ * Struct of Inventory
+ *
+ * int xp_total : total of xp have player
+ * 
+ * int level : level of the player
+ * 
+ * char name[100] : name of player
+ * 
+ * struct inventory *Inventory  : reference to inventory structure
+ * 
+ * int hp : hp of player
+ * 
+ * int id_armor : id of armor the player equipe
+ * 
+ * int id_sword : id ofsword the player equipe
+ * 
+ * int id_magic_orb : id of magic orb the player equipe
+*/
 struct player
 {
     int xp_total;
+    int level;
     char name[100];
     struct inventory *Inventory;
-
+    int hp;
+    int damage_sword;
+    int id_armor;
+    int id_sword;
+    int id_magic_orb;
 };
 /**
  * Struct of all Worlds
@@ -87,6 +111,8 @@ struct level{
  * 
  * char name : name of the armor
  * 
+ * int tier : tier of the armor
+ * 
  * int hp_boost : number of hp the armor boost 
  * 
  * int attack_boost : number of armor up the damage
@@ -95,9 +121,10 @@ struct level{
 struct armor{   
     int id; 
     char name[10];
-    int hp_boost;  
     int tier;
+    int hp_boost;  
     int attack_boost; 
+    bool equipped;
 };
 /**
  * Struct of sword
@@ -106,7 +133,11 @@ struct armor{
  * 
  * char name : name of the sword
  * 
+ * int tier : tier of the sword
+ * 
  * int damage : damage of the sword
+ * 
+ * bool equipped : boolean for check if the magic_orb is equipped
  * 
 */
 struct sword{
@@ -114,6 +145,7 @@ struct sword{
     char name[15];
     int tier;
     int damage; 
+    bool equipped;
 };
 /**
  * Struct of Magic Orb
@@ -122,15 +154,22 @@ struct sword{
  * 
  * char name : name of the orb
  * 
+ * char type : type of magic
+ * 
+ * int tier : tier of the magic_orb
+ * 
  * int damage_boost : damage of the orb boost the magic attack
+ * 
+ * bool equipped : boolean for check if the magic_orb is equipped
  * 
 */
 struct magic_orb{
     int id;
     char name[15]; 
-    char type_magic[10]; 
+    char type[10]; 
     int tier;
     int damage_boost;
+    bool equipped;
 };
 /**
  * Struct of Heal
@@ -139,15 +178,52 @@ struct magic_orb{
  * 
  * char name : name of the heal
  * 
+ * int tier : tier 
+ * 
  * int hp_recharge : hp the heal recharge
+ * 
  * 
 */
 struct heal{
     int id; 
-    char name[15];
+    char name[20];
     int tier;
     int hp_recharge;
+    
+};
+/**
+ * Struct of master
+ *
+ * int id : id of the master
+ * 
+ * char name : name of the master
+ * 
+ * int hp : hp of the master
+ * 
+ * int damage_min
+ *                  -> slice of damage can inflict the master
+ * int damage_max
+ * 
+ * int xp_win_min
+ *                  -> slice of the player can win
+ * int xp_win_max
+ 
+*/
+struct master {
+    int id;
+    char name[15];
+    int hp;
+    int damage_min;
+    int damage_max;
+    int xp_win_min;
+    int xp_win_max;
 };
 
-
+struct attack{
+    int id ;
+    char name[50];
+    int tier;
+    int type;
+    int damage;
+}
 #endif 
