@@ -18,6 +18,10 @@ int armor_setup(struct armor *armor_builder, int id, char armor_name[], int tier
 int magic_orb_setup(struct magic_orb *orb_builder, int id, char magic_orb_name[],  int tier, char type_magic[], int damage_boost);
 int heal_setup(struct heal *heal_builder, int id ,char heal_name[],int tier, int hp_recharge);
 int level_of_player(int xp);
-int fight_main(struct player *player/*, struct Maitre *Maitre*/);
+int fight_main(struct player *player,struct mob *mob);
 int attack_setup(struct attack *attack_builder, int id ,char attack_name[],int tier, int type, int damage);
+void fight_interface(struct player *player, struct mob *mob, int hp_player_in, int hp_mob_in);
+int mob_setup(struct mob *mob_builder ,char name[], int hp , int damage_min, int damage_max, int xp_win_min, int xp_win_max);
+void armor_boost(struct player *player, int type);
+int sword_boost(struct player *player);
 #endif

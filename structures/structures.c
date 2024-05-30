@@ -17,8 +17,8 @@
 struct world{
         bool acces;
         char name[10];
-        bool level_status[4];
-        char level_name[50][4];
+        bool level_status[5];
+        char level_name[5][50];
         struct map *map;
         
 };
@@ -191,9 +191,8 @@ struct heal{
  * int xp_win_max
  
 */
-struct Maitre {
-    int id;
-    char name[15];
+struct mob {
+    char name[30];
     int hp;
     int damage_min;
     int damage_max;
@@ -207,4 +206,4 @@ struct attack{
     int tier;
     int type;
     int damage;
-}
+};

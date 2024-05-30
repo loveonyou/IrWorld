@@ -1,5 +1,6 @@
 #ifndef STRUCT_H
 #define STRUCT_H
+#include <stdbool.h>
 /**
  * Struct of world 
  *
@@ -14,8 +15,8 @@
 struct world{
         bool acces;
         char name[10];
-        bool level_status[4];
-        char level_name[50][4];
+        bool level_status[5];
+        char level_name[5][50];
         struct map *map;
         
 };
@@ -36,6 +37,7 @@ struct inventory{
        struct sword *sword[15];
        struct magic_orb *magic_orb[15];
        struct heal *heal[30];
+       struct attack *attack[16];
     };
 /**
  * Struct of Inventory
@@ -125,6 +127,7 @@ struct armor{
     int hp_boost;  
     int attack_boost; 
     bool equipped;
+    bool unlock ;
 };
 /**
  * Struct of sword
@@ -146,6 +149,7 @@ struct sword{
     int tier;
     int damage; 
     bool equipped;
+    bool unlock ;
 };
 /**
  * Struct of Magic Orb
@@ -170,6 +174,7 @@ struct magic_orb{
     int tier;
     int damage_boost;
     bool equipped;
+    bool unlock ;
 };
 /**
  * Struct of Heal
@@ -189,6 +194,7 @@ struct heal{
     char name[20];
     int tier;
     int hp_recharge;
+    int quantity;
     
 };
 /**
@@ -209,9 +215,9 @@ struct heal{
  * int xp_win_max
  
 */
-struct master {
+struct mob {
     int id;
-    char name[15];
+    char name[30];
     int hp;
     int damage_min;
     int damage_max;
@@ -225,5 +231,7 @@ struct attack{
     int tier;
     int type;
     int damage;
-}
+    bool equipped;
+    bool unlock ;
+};
 #endif 

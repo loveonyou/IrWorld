@@ -12,20 +12,24 @@
  * 
 */
 void world_1(struct player *player, struct worlds *worlds){
-    int i =0;
+
     printf("  ____      _      ____    _____   _____ \n");
     printf(" / ___|    / \\    |  _ \\  |_   _| | ____| \n");
     printf("| |       / _ \\   | |_) |   | |   |  _|  \n");
     printf("| |___   / ___ \\  |  _ <    | |   | |___ \n");
     printf(" \\____| /_/   \\_\\ |_| \\_\\   |_|   |_____|\n\n");
                                         
-    for(i ; i <=19 ; i++){
-        printf("%s\n", worlds->World_1->map->line[i]);
-    }
+    
 
-    printf("\n Salut, %s.\n Je te shouaite la bienvenue dans le monde de Foga.", player->name);
-
-    scanf("%d");
+    printf("\n Salut, %s.\n Je te shouaite la bienvenue dans le monde de Foga.\n", player->name);
+    printf("╔ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ╗\n");
+    printf("║[1] : %s                       ║\n", worlds->World_1->level_name[1]);
+    printf("║[2] : %s                       ║\n", worlds->World_1->level_name[2]);
+    printf("║[3] : %s                       ║\n", worlds->World_1->level_name[3]);
+    printf("║[4] : %s                       ║\n", worlds->World_1->level_name[4]);
+    printf("║[5] : %s                       ║\n", worlds->World_1->level_name[4]);
+    printf("╚ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ╝\n");
+    system("pause");
 
     
 }

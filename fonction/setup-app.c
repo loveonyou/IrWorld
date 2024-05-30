@@ -1,4 +1,8 @@
-
+#include <stdio.h>
+#include <stdlib.h>
+#include <stdbool.h>
+#include <time.h>
+#include <string.h>
 #include "../asset/asset.h"
 #include "../structures/structures.h"
 
@@ -9,7 +13,7 @@
  * 
  * @return 1 or 0 , corresponding if the asset setup correctly, 1 : error, 0 : success
  */
-int builder_app(int *ptr_backup_key ){
+int builder_app(int *ptr_backup_key){
     create_save_key(ptr_backup_key);
     int check_police = system("chcp 65001");
     int check_title = system("title \" IrWorld | Creation du Compte \" ");
@@ -21,7 +25,8 @@ int builder_app(int *ptr_backup_key ){
     else{
         return 1;
     }
-}
+    return 0;
+}       
 /**
  * build asset and overlay for the app
  *
@@ -37,9 +42,11 @@ int worlds_setup(struct world *world_builder, char world_name[], char Line_1[], 
 
     world_builder->acces = false;
     strcpy(world_builder->name, world_name);
-    for (int i = 0 ; i <= 4; i++){
+    for (int i = 0 ; i <= 5; i++){
         world_builder->level_status[i] = false;    
     }
+
+
     strcpy(world_builder->map->line[0] , Line_1 );
     strcpy(world_builder->map->line[1] , Line_2 );
     strcpy(world_builder->map->line[2] , Line_3 );
@@ -84,6 +91,7 @@ int sword_setup(struct sword *sword_builder,int id, char sword_name[],int tier, 
     sword_builder->tier = tier;
     sword_builder->damage = damage;
     sword_builder->equipped = false;
+    sword_builder->unlock = false ;
 
 }
 /**
@@ -109,6 +117,7 @@ int armor_setup(struct armor *armor_builder, int id, char armor_name[], int tier
     armor_builder->tier = tier;
     armor_builder->attack_boost = attack_boost;
     armor_builder->equipped = false;
+    armor_builder->unlock = false;
   
 }
 
@@ -120,6 +129,7 @@ int magic_orb_setup(struct magic_orb *orb_builder, int id, char magic_orb_name[]
     orb_builder->damage_boost = damage_boost;
     orb_builder->equipped = false;
 
+
 }
 
 int heal_setup(struct heal *heal_builder, int id ,char heal_name[],int tier, int hp_recharge){
@@ -127,6 +137,8 @@ int heal_setup(struct heal *heal_builder, int id ,char heal_name[],int tier, int
     strcpy(heal_builder->name, heal_name);
     heal_builder->tier = tier;
     heal_builder->hp_recharge = hp_recharge;
+    heal_builder->quantity = 0;
+
 
 }
 
@@ -136,4 +148,15 @@ int attack_setup(struct attack *attack_builder, int id ,char attack_name[],int t
     attack_builder->tier = tier;
     attack_builder->type = type;
     attack_builder->damage = damage;
+    attack_builder->equipped = false;
+    attack_builder->unlock = false;
+}
+
+int mob_setup(struct mob *mob_builder ,char name[], int hp , int damage_min, int damage_max, int xp_win_min, int xp_win_max){
+    strcpy(mob_builder->name, name);
+    mob_builder->hp = hp;
+    mob_builder->damage_min = damage_min;
+    mob_builder->damage_max = damage_max;
+    mob_builder->xp_win_min = xp_win_min;
+    mob_builder->xp_win_max = xp_win_max;
 }
