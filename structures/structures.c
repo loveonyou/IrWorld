@@ -18,7 +18,6 @@ struct world{
         bool acces;
         char name[10];
         bool level_status[5];
-        char level_name[5][50];
         struct map *map;
         
 };

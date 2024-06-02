@@ -1,11 +1,15 @@
-#include<stdlib.h>
+#include <stdlib.h>
 #include <stdio.h>
 #include <stdbool.h>
 #include <time.h>
-#include "fonction/fonction.h"
+#include <signal.h>
 #include <string.h>
+#include <pthread.h>
+#include <unistd.h>
+#include "fonction/fonction.h"
 #include "asset/asset.h"
 #include "structures/structures.h"
+
 
 
 
@@ -41,6 +45,12 @@ int main(void){
 
     // setup wolrds struct
     struct worlds *Worlds = malloc(sizeof(struct worlds));
+    Worlds->World_1 = malloc(sizeof(struct world));
+    Worlds->World_2 = malloc(sizeof(struct world));
+    Worlds->World_3 = malloc(sizeof(struct world));
+    Worlds->World_4 = malloc(sizeof(struct world));
+
+    
 
     // setup mob 
     struct mob *mob_1 = malloc(sizeof(struct mob));
@@ -136,11 +146,6 @@ int main(void){
     attack_setup(ptr_player->Inventory->attack[14], 0525, "extension of the territory", 2, 5, 45);
     attack_setup(ptr_player->Inventory->attack[15], 0535, "world of shadows", 3, 5, 60);
 
-    // default item for player
-    ptr_player->Inventory->attack[1]->equipped = true;
-    ptr_player->Inventory->attack[2]->equipped = true;
-    ptr_player->Inventory->attack[3]->equipped = true;
-    ptr_player->Inventory->heal[1]->quantity = 15;
 
     // setup all wolrds information
     world_setup_statuts_1  = worlds_setup(world_1_temp, "Foga", 
@@ -243,13 +248,18 @@ int main(void){
     free(world_3_temp);
     free(world_4_temp);
     
-    // setup the world level name
+    // default item for player
+    ptr_player->Inventory->attack[1]->equipped = true;
+    ptr_player->Inventory->attack[2]->equipped = true;
+    ptr_player->Inventory->attack[3]->equipped = true;
+    ptr_player->Inventory->heal[1]->quantity = 15;
+    Worlds->World_1->acces = true;
+    Worlds->World_1->level_status[1] = true;
 
 
     printf("\033[31mVeuillez mettre votre terminal en plein ecran pour le déroulement du jeux ! \033[37m\n");
     system("pause");
-    ptr_player->Inventory->armors[1]->equipped = true;
-    ptr_player->Inventory->sword[1]->equipped = true;
+
 
     
     if (world_setup_statuts_1 != 0  || world_setup_statuts_2 != 0 || world_setup_statuts_3 != 0 || world_setup_statuts_4 != 0 ){ // chedck if atll world are setup correctly
@@ -264,18 +274,32 @@ int main(void){
         return 1;
     }
     else if (app_create_status == 0){  // start of app 
+
+        system("cls");
         Start_menu(ptr_player->name); 
+
         while (app_status == true){
+
             system("CLS");
             nav_choose = nav_menu(); 
+
             if (nav_choose == 0){
+
                 break;
+
             }
             else if(nav_choose == 1){ // start history
                 wolrd_choose = choose_world();
+
                 system("CLS");
+
                 if (wolrd_choose == 1){
-                    world_1(ptr_player, Worlds);
+
+                    if(Worlds->World_1->acces == true){
+
+                        world_1(ptr_player, Worlds);
+
+                    }
                 }
             }
             else if (nav_choose == 2){ // show profile of player
@@ -301,11 +325,13 @@ int main(void){
                 continue;
             }
             else if (nav_choose == 3){ // load and save
+
                 printf("chargée une sauvagarde [no available]\n");
                 system("pause");
                 
             }
             else if (nav_choose == 4){ // show backup key
+
                     printf("╔ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ╗\n");
                     printf("║           Backup-Key          ║\n");
                     printf("║              %i              ║\n", backup_key);
@@ -313,6 +339,7 @@ int main(void){
                     system("pause");
             }
             else if (nav_choose == 10){ // show rules
+
                 printf("Régles [no available]");
                 system("pause");
             }

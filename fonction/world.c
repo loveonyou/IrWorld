@@ -1,35 +1,162 @@
-#include<stdlib.h>
+#include <stdlib.h>
 #include <stdio.h>
 #include <stdbool.h>
 #include <time.h>
 #include <string.h>
+#include <unistd.h>
 #include "../asset/asset.h"
 #include "../structures/structures.h"
+#include "fonction.h"
 /**
  * Wolrd one
  * 
  * @param ptr_pseudo : pointer to pseudo of player 
  * 
 */
+
+int level_1(struct player *player){
+    char choix_1;
+    int win_fight;
+    int win;
+    int xp_win = 15;
+
+    // Set up the mob use this level
+    struct mob *mob_1 = malloc(sizeof(struct mob));
+    mob_1->damage_max = 30;
+    mob_1->damage_min = 5;
+    mob_1->hp = 100;
+    mob_1->xp_win_max = 0;
+    mob_1->xp_win_min = 0;
+    strcpy(mob_1->name, "Monstre de feux");
+
+
+
+
+
+    printf("Maître Uchi : Bonjour %s, es-tu prêt à commencer ton entraînement ?(y(yes)\\n(no))\n", player->name);
+    scanf(" %c", &choix_1);
+
+    if (choix_1 == 'y'){
+
+        printf("\nMaitre Uchi : Commencons t'on entrainement par les technique de base..");
+        sleep(5);
+        printf("\nVillageois : Des Monstre de feux se trouve dans la foret, nous avons besoin de votre aide Maitre Uchi");
+        sleep(5);
+        printf("\nMaitre Uchi : pas d'entraînement traditionnel, vous allez directement vous entraîner sur le terrain."); 
+        sleep(5);
+
+        printf("\nCe niveau servira de didacticiel dans l'histoire, assure-toi de bien comprendre comment cela fonctionne.\n");
+
+        system("pause");
+        win_fight = fight_main(player, mob_1);
+
+        if (win_fight == 1){
+            printf("\nMaitre Uchi : Bravo tu a compris comment fonctionn les combat et tu apris les technique de base, l'aventure t'attend ! \n");
+            sleep(5);
+            system("pause");
+            win = 1;
+
+        }
+        else {
+            printf("\nMaitre Uchi : Tu n'as pas réussi à combattre le monstre, tu dois recommencer.\n");
+            sleep(5);
+            system("pause");
+            win = 0;
+        }
+        
+
+    }
+    else {
+        printf("Au revoir %s, ton aventure s'arrête ici.\n", player->name);
+        system("pause");
+        exit(0);
+    }
+
+    free(mob_1);
+
+    if (win == 1){
+        return xp_win;
+    }
+    else {
+        return 0;
+    }
+
+}
 void world_1(struct player *player, struct worlds *worlds){
-
-    printf("  ____      _      ____    _____   _____ \n");
-    printf(" / ___|    / \\    |  _ \\  |_   _| | ____| \n");
-    printf("| |       / _ \\   | |_) |   | |   |  _|  \n");
-    printf("| |___   / ___ \\  |  _ <    | |   | |___ \n");
-    printf(" \\____| /_/   \\_\\ |_| \\_\\   |_|   |_____|\n\n");
-                                        
+    system("cls");
+    bool chooseinput = false;
+    int choose,caracter;
+    int level_chose = 0;
+    bool world_1_alive = true;
+    int win_statut_1, win_statut_2,win_statut_3,win_statut_4,win_statut_5;
     
 
-    printf("\n Salut, %s.\n Je te shouaite la bienvenue dans le monde de Foga.\n", player->name);
-    printf("╔ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ╗\n");
-    printf("║[1] : %s                       ║\n", worlds->World_1->level_name[1]);
-    printf("║[2] : %s                       ║\n", worlds->World_1->level_name[2]);
-    printf("║[3] : %s                       ║\n", worlds->World_1->level_name[3]);
-    printf("║[4] : %s                       ║\n", worlds->World_1->level_name[4]);
-    printf("║[5] : %s                       ║\n", worlds->World_1->level_name[4]);
-    printf("╚ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ╝\n");
-    system("pause");
+    printf("\nSalut, %s.\nJe te shouaite la bienvenue dans le monde de Foga.\n", player->name);
+    system("pause\n");
 
-    
+    while (world_1_alive == true){
+        chooseinput = false;
+        system("cls");
+        printf("  ____      _      ____    _____   _____ \n");
+        printf(" / ___|    / \\    |  _ \\  |_   _| | ____| \n");
+        printf("| |       / _ \\   | |_) |   | |   |  _|  \n");
+        printf("| |___   / ___ \\  |  _ <    | |   | |___ \n");
+        printf(" \\____| /_/   \\_\\ |_| \\_\\   |_|   |_____|\n\n");
+
+        for(int i = 0; i <=19 ; i++){
+            printf("%s\n", worlds->World_1->map->line[i]);
+        }                                     
+        printf("╔ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ╗\n");
+        printf("║[1]  : Feu de la foret                     ║\n");
+        printf("║[2]  : Le katon                            ║\n");
+        printf("║[3]  : Chez Kunomi                         ║\n");
+        printf("║[4]  : La meilleur attaque c'est défense   ║\n");
+        printf("║[5]  : Maitre du feux                      ║\n");
+        printf("║[0]  : Quitter le monde                    ║\n");
+        printf("║[10] : Inventaire                          ║\n");
+        printf("╚ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ╝\n");
+        while (chooseinput == false){
+            printf("-> : ");
+            if(scanf("%i", &level_chose) == 1){
+                chooseinput = true;
+            }
+            else{
+                printf("Veuillez saisir un nombre\n");
+                while ((caracter = getchar()) != '\n' && caracter != EOF);
+            }
+        }
+        if (level_chose == 1){
+                if (worlds->World_1->level_status[1] == true){
+
+                    win_statut_1 = level_1(player);
+                    
+                    if (win_statut_1 > 0){
+                        player->xp_total += win_statut_1;
+
+                        printf("╔ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ╗\n");
+                        printf("║       Item Debloque       ║\n");
+                        printf("║ Attaque : Sword Stroke    ║\n");
+                        printf("║ Attaque : Sword Dash      ║\n");
+                        printf("║ Soin    : 15 Pommes       ║\n");
+                        printf("║ Xp      : %i              ║\n", win_statut_1);
+                        printf("║ Niveaux : 2               ║\n");
+                        printf("╚ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ╝\n");
+                        }
+                        worlds->World_1->level_status[2] = true;
+                        player->Inventory->heal[1]->quantity += 15;
+                        system("pause");
+                }
+            }
+        if (level_chose == 0) {
+
+            world_1_alive = false;
+
+        }
+        else {
+
+            printf("Choix Invalide");
+
+        }
+    }
+
 }
