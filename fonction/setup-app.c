@@ -9,7 +9,7 @@
 /**
  * build asset and overlay for the app
  *  
- * @param ptr_backup_key : pointer to backup key to restore save
+ * @param ptr_backup_key  pointer to backup key to restore save
  * 
  * @return 1 or 0 , corresponding if the asset setup correctly, 1 : error, 0 : success
  */
@@ -30,11 +30,11 @@ int builder_app(int *ptr_backup_key){
 /**
  * build asset and overlay for the app
  *
- * @param world_builder : pointer to world, form struct wolrd
+ * @param world_builder  pointer to world, form struct wolrd
  * 
- * @param world_name : name of the world
+ * @param world_name  name of the world
  * 
- * @param line_1->6 : line of the world map , which goes from line_1 to line_20
+ * @param line_1->6  line of the world map , which goes from line_1 to line_20
  * 
  * @return 1 if the wolrds setup correctly
  */
@@ -42,30 +42,31 @@ int worlds_setup(struct world *world_builder, char world_name[], char Line_1[], 
 
     world_builder->acces = false;
     strcpy(world_builder->name, world_name);
+
     for (int i = 0 ; i <= 5; i++){
         world_builder->level_status[i] = false;    
     }
 
 
-    strcpy(world_builder->map->line[0] , Line_1 );
-    strcpy(world_builder->map->line[1] , Line_2 );
-    strcpy(world_builder->map->line[2] , Line_3 );
-    strcpy(world_builder->map->line[3] , Line_4 );
-    strcpy(world_builder->map->line[4] , Line_5 );
-    strcpy(world_builder->map->line[5] , Line_6 );
-    strcpy(world_builder->map->line[6] , Line_7 );
-    strcpy(world_builder->map->line[7] , Line_8 );
-    strcpy(world_builder->map->line[8] , Line_9 );
-    strcpy(world_builder->map->line[9] , Line_10);
-    strcpy(world_builder->map->line[10] , Line_11);
-    strcpy(world_builder->map->line[11] , Line_12);
+    strcpy(world_builder->map->line[0]  , Line_1  );
+    strcpy(world_builder->map->line[1]  , Line_2  );
+    strcpy(world_builder->map->line[2]  , Line_3  );
+    strcpy(world_builder->map->line[3]  , Line_4  );
+    strcpy(world_builder->map->line[4]  , Line_5  );
+    strcpy(world_builder->map->line[5]  , Line_6  );
+    strcpy(world_builder->map->line[6]  , Line_7  );
+    strcpy(world_builder->map->line[7]  , Line_8  );
+    strcpy(world_builder->map->line[8]  , Line_9  );
+    strcpy(world_builder->map->line[9]  , Line_10 );
+    strcpy(world_builder->map->line[10] , Line_11 );
+    strcpy(world_builder->map->line[11] , Line_12 );
     strcpy(world_builder->map->line[12] , Line_13 );
-    strcpy(world_builder->map->line[13] , Line_14);
-    strcpy(world_builder->map->line[14] , Line_15);
-    strcpy(world_builder->map->line[15] , Line_16);
-    strcpy(world_builder->map->line[16] , Line_17);
-    strcpy(world_builder->map->line[17] , Line_18);
-    strcpy(world_builder->map->line[18] , Line_19);
+    strcpy(world_builder->map->line[13] , Line_14 );
+    strcpy(world_builder->map->line[14] , Line_15 );
+    strcpy(world_builder->map->line[15] , Line_16 );
+    strcpy(world_builder->map->line[16] , Line_17 );
+    strcpy(world_builder->map->line[17] , Line_18 );
+    strcpy(world_builder->map->line[18] , Line_19 );
     strcpy(world_builder->map->line[19] , Line_20 );
 
     return 0;
@@ -74,15 +75,15 @@ int worlds_setup(struct world *world_builder, char world_name[], char Line_1[], 
 /**
  * setup the variables for the sword
  *
- * @param sword_builder : reference to an sword for building it
+ * @param sword_builder  reference to an sword for building it
  * 
- * @param id : id of the sword
+ * @param id  id of the sword
  * 
- * @param sword_name : name of the sword
+ * @param sword_name  name of the sword
  * 
- * @param tier : tier of the sword
+ * @param tier  tier of the sword
  * 
- * @param damage : damage of the sword
+ * @param damage  damage of the sword
  
 */
 int sword_setup(struct sword *sword_builder,int id, char sword_name[],int tier, int damage   ){
@@ -97,17 +98,17 @@ int sword_setup(struct sword *sword_builder,int id, char sword_name[],int tier, 
 /**
  * setup the variables for the armor
  *
- * @param armor_builder : reference to an armor for building it
+ * @param armor_builder  reference to an armor for building it
  * 
- * @param id : id of the armor
+ * @param id  id of the armor
  * 
- * @param armor_name : name of the armor
+ * @param armor_name  name of the armor
  * 
- * @param hp_boost : hp the armor boost the live of player
+ * @param hp_boost  hp the armor boost the live of player
  * 
- * @param tier : tier of the armor
+ * @param tier  tier of the armor
  * 
- * @param attack_boost : attack boost of the armor
+ * @param attack_boost  attack boost of the armor
  
 */
 int armor_setup(struct armor *armor_builder, int id, char armor_name[], int tier, int hp_boost, int attack_boost){
@@ -120,7 +121,11 @@ int armor_setup(struct armor *armor_builder, int id, char armor_name[], int tier
     armor_builder->unlock = false;
   
 }
-
+/**
+ * Implement magic orb serving in the program
+ * 
+ * @param orb_builder 
+*/
 int magic_orb_setup(struct magic_orb *orb_builder, int id, char magic_orb_name[],  int tier, char type_magic[], int damage_boost){
     orb_builder->id = id;
     strcpy(orb_builder->name, magic_orb_name);

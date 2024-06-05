@@ -252,6 +252,14 @@ int main(void){
     ptr_player->Inventory->attack[1]->equipped = true;
     ptr_player->Inventory->attack[2]->equipped = true;
     ptr_player->Inventory->attack[3]->equipped = true;
+    ptr_player->Inventory->attack[1]->unlock = true;
+    ptr_player->Inventory->attack[2]->unlock = true;
+    ptr_player->Inventory->attack[3]->unlock = true;
+    //
+    ptr_player->Inventory->armors[1]->unlock = true;
+    ptr_player->Inventory->sword[1]->unlock = true;
+    ptr_player->Inventory->magic_orb[1]->unlock = true;
+    
     ptr_player->Inventory->heal[1]->quantity = 15;
     Worlds->World_1->acces = true;
     Worlds->World_1->level_status[1] = true;
@@ -279,16 +287,16 @@ int main(void){
         Start_menu(ptr_player->name); 
 
         while (app_status == true){
-
+            system("title \" IrWorld | Navigation  \" ");
             system("CLS");
             nav_choose = nav_menu(); 
 
             if (nav_choose == 0){
-
                 break;
-
             }
             else if(nav_choose == 1){ // start history
+                system("title \" IrWorld | Choix du monde  \" ");
+                system("CLS");
                 wolrd_choose = choose_world();
 
                 system("CLS");
@@ -300,9 +308,51 @@ int main(void){
                         world_1(ptr_player, Worlds);
 
                     }
+                    else {
+                        printf("Vous n'avez pas acces a se monde.");
+                        system("pause");
+                    }
+                }
+                else if (wolrd_choose == 2){
+
+                    if(Worlds->World_2->acces == true){
+
+                        //world_2(ptr_player, Worlds);
+
+                    }
+                    else {
+                        printf("Vous n'avez pas acces a se monde.");
+                        system("pause");
+                    }
+                }
+                else if (wolrd_choose == 3){
+
+                    if(Worlds->World_3->acces == true){
+
+                        //world_3(ptr_player, Worlds);
+
+                    }
+                    else {
+                        printf("Vous n'avez pas acces a se monde.");
+                        system("pause");
+                    }
+                }
+                else if (wolrd_choose == 4){
+
+                    if(Worlds->World_4->acces == true){
+
+                        //world_4(ptr_player, Worlds);
+
+                    }
+                    else {
+                        printf("Vous n'avez pas acces a se monde.");
+                        system("pause");
+                    }
                 }
             }
             else if (nav_choose == 2){ // show profile of player
+
+                system("title \" IrWorld | Profile \" ");
                 system("cls");
                 printf("  ____                    __   _   _        \n");
                 printf(" |  _ \\   _ __    ___    / _| (_) | |   ___ \n");
@@ -326,12 +376,14 @@ int main(void){
             }
             else if (nav_choose == 3){ // load and save
 
+                system("title \" IrWorld | Chargée une sauvgarde  \" ");
                 printf("chargée une sauvagarde [no available]\n");
                 system("pause");
                 
             }
             else if (nav_choose == 4){ // show backup key
 
+                    system("title \" IrWorld | Backup-Key \" ");
                     printf("╔ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ╗\n");
                     printf("║           Backup-Key          ║\n");
                     printf("║              %i              ║\n", backup_key);
@@ -340,8 +392,10 @@ int main(void){
             }
             else if (nav_choose == 10){ // show rules
 
+                system("title \" IrWorld | Régles  \" ");
                 printf("Régles [no available]");
                 system("pause");
+                
             }
         }
     }

@@ -120,6 +120,8 @@ void fight_interface(struct player *player, struct mob *mob, int hp_player_in, i
 */
 int fight_main(struct player *player, struct mob *mob){
     
+    system("title \" IrWorld | Combat  \" ");
+
     bool fight = true;
     int choix =  0;
     int check_attack = 0;
