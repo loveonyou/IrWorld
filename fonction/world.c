@@ -15,6 +15,9 @@
 */
 
 int level_1(struct player *player){
+
+    system("title \" IrWorld | Foga : Feu de la foret  \" ");
+
     char choix_1;
     int win_fight;
     int win;
@@ -84,10 +87,14 @@ int level_1(struct player *player){
 }
 void world_1(struct player *player, struct worlds *worlds){
     system("cls");
+    
+
+    bool equipped = true;
     bool chooseinput = false;
-    int choose,caracter;
-    int level_chose = 0;
     bool world_1_alive = true;
+
+    int choose,caracter;
+    int level_chose = 0, choose_equipped = 0, choose_equipped_2 = 0;
     int win_statut_1, win_statut_2,win_statut_3,win_statut_4,win_statut_5;
     
 
@@ -95,8 +102,13 @@ void world_1(struct player *player, struct worlds *worlds){
     system("pause\n");
 
     while (world_1_alive == true){
-        chooseinput = false;
+
+        system("title \" IrWorld | Monde Foga  \" ");
         system("cls");
+        
+        equipped = true;
+        chooseinput = false;
+        
         printf("  ____      _      ____    _____   _____ \n");
         printf(" / ___|    / \\    |  _ \\  |_   _| | ____| \n");
         printf("| |       / _ \\   | |_) |   | |   |  _|  \n");
@@ -126,7 +138,7 @@ void world_1(struct player *player, struct worlds *worlds){
             }
         }
         if (level_chose == 1){
-                if (worlds->World_1->level_status[1] == true){
+                if (worlds->World_1->level_status[level_chose] == true){
 
                     win_statut_1 = level_1(player);
                     
@@ -146,11 +158,106 @@ void world_1(struct player *player, struct worlds *worlds){
                         player->Inventory->heal[1]->quantity += 15;
                         system("pause");
                 }
+                else {
+                    printf("Vous n'avez pas atteint ce niveau.\n");
+                    system("pause");
+                }
             }
-        if (level_chose == 0) {
+        else if (level_chose == 2){
+            if (worlds->World_1->level_status[level_chose] == true){
+
+            }
+            else {
+                    printf("Vous n'avez pas atteint ce niveau.\n");
+                    system("pause");
+                }
+        }
+        else if (level_chose == 3){
+            if (worlds->World_1->level_status[level_chose] == true){
+
+            }
+            else {
+                    printf("Vous n'avez pas atteint ce niveau.\n");
+                    system("pause");
+                }
+        }
+        else if (level_chose == 4){
+            if (worlds->World_1->level_status[level_chose] == true){
+
+            }
+            else {
+                    printf("Vous n'avez pas atteint ce niveau.\n");
+                    system("pause");
+                }
+        }
+        else if (level_chose == 5){
+            if (worlds->World_1->level_status[level_chose] == true){
+
+            }
+            else {
+                    printf("Vous n'avez pas atteint ce niveau.\n");
+                    system("pause");
+                }
+        }
+        else if (level_chose == 0) {
 
             world_1_alive = false;
 
+        }
+        else if (level_chose == 10) {
+
+            printf("Armures : \n");
+            for(int i = 1; i < 5; i++){
+                if (player->Inventory->armors[i]->unlock == true){
+                    printf("[%i] : Armure %s\n", i, player->Inventory->armors[i]->name);
+                }
+            }
+            printf("Épées : \n");
+            for(int i = 1; i <= 5; i++){
+                if (player->Inventory->sword[i]->unlock == true){
+                    printf("[%i] : Épée %s\n", i, player->Inventory->sword[i]->name);
+                }
+            }
+            printf("Orb Magique : \n");
+            for(int i = 1; i <= 5; i++){
+                if (player->Inventory->magic_orb[i]->unlock == true){
+                    printf("[%i] : Orb magique %s\n", i, player->Inventory->magic_orb[i]->name);
+                }
+            }
+            printf("Attaques : \n");
+            for(int i = 1; i <= 15; i++){
+                if (player->Inventory->attack[i]->unlock == true){
+                    printf("[%i] : %s\n", i, player->Inventory->attack[i]->name);
+                }
+            }
+            printf("Soins : \n");
+            for(int i = 1; i <= 5; i++){
+                printf("[%i] : %s\n", i, player->Inventory->heal[i]->name);
+            }
+            system("pause");
+
+            while (equipped == true){
+
+                printf("╔ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ╗");
+                printf("║        Equiper            ║\n");
+                printf("║ [1] : Armures             ║\n");
+                printf("║ [2] : Épées               ║\n");
+                printf("║ [3] : Orb Magique         ║\n");
+                printf("║ [4] : Attaques            ║\n");
+                printf("╚ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ═ ╝\n");
+
+                printf("-> : ");
+                scanf("%i", &choose_equipped);
+
+                if (choose_equipped == 1) {
+
+                    printf("\nChoisi l'armure que tu veux equiper\n");
+                    printf("-> : ");
+                    scanf("%i", &choose_equipped_2);
+
+
+                }
+            }
         }
         else {
 
