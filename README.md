@@ -8,4 +8,4 @@
 
 # Run
 
-- ![Dowload](https://github.com/loveonyou/IrWorld/blob/main/IrWorld.exe)
+- [![Dowload](https://github.com/loveonyou/IrWorld/blob/main/IrWorld.exe)
