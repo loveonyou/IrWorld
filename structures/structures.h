@@ -223,7 +223,19 @@ struct mob {
     int xp_win_min;
     int xp_win_max;
 };
-
+/**
+ * Struct of attack
+ * 
+ * int id : id of the attack
+ * 
+ * char name : name of the attack
+ * 
+ * int tier : tier of the attack
+ * 
+ * int type : type of magic 
+ * 
+ * int damage : damage of the attack
+*/
 struct attack{
     int id ;
     char name[50];

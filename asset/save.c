@@ -2,6 +2,13 @@
 #include <stdio.h>
 #include <time.h>
 
+/**
+ * Create the backup key
+ * 
+ * @param ptr_backup_key pointeur of the backup key
+ * 
+ * return 0 on success
+*/
 int create_save_key(int *ptr_backup_key){
     srand((unsigned)time(NULL));
 

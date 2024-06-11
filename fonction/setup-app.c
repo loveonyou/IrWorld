@@ -124,9 +124,20 @@ int armor_setup(struct armor *armor_builder, int id, char armor_name[], int tier
 /**
  * Implement magic orb serving in the program
  * 
- * @param orb_builder 
+ * @param orb_builder pointeur of the maigc_orb struct
+ * 
+ * @param id id of the item
+ * 
+ * @param magic_orb_name
+ * 
+ * @param tier tier of the item
+ * 
+ * @param type_magic
+ * 
+ * @param damage_boost
 */
 int magic_orb_setup(struct magic_orb *orb_builder, int id, char magic_orb_name[],  int tier, char type_magic[], int damage_boost){
+    
     orb_builder->id = id;
     strcpy(orb_builder->name, magic_orb_name);
     strcpy(orb_builder->type, type_magic);
@@ -136,8 +147,21 @@ int magic_orb_setup(struct magic_orb *orb_builder, int id, char magic_orb_name[]
 
 
 }
-
+/**
+ * Implement heal serving in the program
+ * 
+ * @param heal_builder pointeur of the maigc_orb struct
+ * 
+ * @param id id of the item
+ * 
+ * @param heal_name
+ * 
+ * @param tier tier of the item
+ *  
+ * @param hp_recharge
+*/
 int heal_setup(struct heal *heal_builder, int id ,char heal_name[],int tier, int hp_recharge){
+    
     heal_builder->id = id;
     strcpy(heal_builder->name, heal_name);
     heal_builder->tier = tier;
@@ -146,8 +170,23 @@ int heal_setup(struct heal *heal_builder, int id ,char heal_name[],int tier, int
 
 
 }
-
+/**
+ * Implement attack serving in the program
+ * 
+ * @param attack_builder pointeur of the maigc_orb struct
+ * 
+ * @param id id of the item
+ * 
+ * @param attack_name
+ * 
+ * @param tier tier of the item
+ * 
+ * @param type type of attack
+ *  
+ * @param damage
+*/
 int attack_setup(struct attack *attack_builder, int id ,char attack_name[],int tier, int type, int damage){
+    
     attack_builder->id = id;
     strcpy(attack_builder->name, attack_name);
     attack_builder->tier = tier;
@@ -155,13 +194,32 @@ int attack_setup(struct attack *attack_builder, int id ,char attack_name[],int t
     attack_builder->damage = damage;
     attack_builder->equipped = false;
     attack_builder->unlock = false;
-}
 
-int mob_setup(struct mob *mob_builder ,char name[], int hp , int damage_min, int damage_max, int xp_win_min, int xp_win_max){
+}
+/**
+ * Implement mob serving in the program
+ * 
+ * @param mob_builder pointeur of the maigc_orb struct
+ * 
+ * @param name
+ * 
+ * @param hp
+ * 
+ * @param damage_min damage min of the mob
+ * 
+ * @param damage_max   " max  "
+ * 
+ * @param xp_win_min 
+ *  
+ * @param xp_win_max
+*/
+int mob_setup(struct mob *mob_builder ,char name[], int hp , int damage_min, int damage_max, int , int xp_win_max){
+
     strcpy(mob_builder->name, name);
     mob_builder->hp = hp;
     mob_builder->damage_min = damage_min;
     mob_builder->damage_max = damage_max;
     mob_builder->xp_win_min = xp_win_min;
     mob_builder->xp_win_max = xp_win_max;
+
 }

@@ -8,12 +8,11 @@
 #include "../structures/structures.h"
 #include "fonction.h"
 /**
- * Wolrd one
+ * Level  1
  * 
  * @param ptr_pseudo : pointer to pseudo of player 
  * 
 */
-
 int level_1(struct player *player){
 
     system("title \" IrWorld | Foga : Feu de la foret  \" ");
@@ -85,6 +84,15 @@ int level_1(struct player *player){
     }
 
 }
+/**
+ * Wolrd 1
+ * 
+ * @param player : pointer of struct player
+ *
+ * @param worlds : pointeur of struct worlds
+ * 
+ * return xp
+*/
 void world_1(struct player *player, struct worlds *worlds){
     system("cls");
     
